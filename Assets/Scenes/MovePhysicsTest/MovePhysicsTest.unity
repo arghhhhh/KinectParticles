@@ -221,7 +221,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller1: {fileID: 1391455891}
   controller2: {fileID: 1047577601}
-  magnitude: 2
+  magnitude: 6.9
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.0023498535
+      inSlope: 4.2860107
+      outSlope: 4.2860107
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.029166667
+    - serializedVersion: 3
+      time: 0.12913589
+      value: 0.55710566
+      inSlope: 1.5648544
+      outSlope: 1.3763915
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.51601374
+      outWeight: 0.086156696
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.11578039
+      outSlope: 0.25157228
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.18333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  distance: 1.5
 --- !u!1 &1047577597
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,27 +267,13 @@ GameObject:
   - component: {fileID: 1047577601}
   - component: {fileID: 1047577600}
   - component: {fileID: 1047577599}
-  - component: {fileID: 1047577598}
   m_Layer: 0
-  m_Name: Controller2
+  m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &1047577598
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1047577597}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1047577599
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -312,7 +332,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047577597}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.47, y: -0.38, z: 0}
+  m_LocalPosition: {x: -0.78772813, y: 6.9950247, z: -8.200012}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -330,9 +350,8 @@ GameObject:
   - component: {fileID: 1391455891}
   - component: {fileID: 1391455894}
   - component: {fileID: 1391455893}
-  - component: {fileID: 1391455892}
   m_Layer: 0
-  m_Name: Controller1
+  m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -353,20 +372,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1391455892
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1391455890}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1391455893
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -454,7 +459,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
