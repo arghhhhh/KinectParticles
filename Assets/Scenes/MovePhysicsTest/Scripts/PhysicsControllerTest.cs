@@ -28,7 +28,8 @@ public class PhysicsControllerTest : MonoBehaviour
     Vector3 objDir;
     Vector3 goToPos;
     Vector3 goToRef;
-    Vector3 projRef;
+    Vector3 refDir;
+    Vector3 projRefDir;
 
     float timeElapsed;
 
@@ -65,23 +66,23 @@ public class PhysicsControllerTest : MonoBehaviour
 
             objPos = transform.position; // current position of sphere
             objDir = objPos - prevObjPos;
-            midDir = goToRef - midPos;
+            refDir = goToRef - midPos;
 
             float distance = Vector3.Distance(prevMidPos, prevObjPos);
-            projRef = midDir + (midPos.normalized * distance);
-            goToPos = projRef + objDir;
+            projRefDir = midDir + (midPos.normalized * distance);
+            goToPos = projRefDir + objDir;
 
-            transform.position = Vector3.MoveTowards(transform.position, goToPos, Time.deltaTime*magnitude);
-            // transform.position = midPos;
+            // objPos = Vector3.MoveTowards(objPos, goToPos, Time.deltaTime*magnitude);
+            objPos = goToPos;
+            transform.position = objPos;
 
             timeElapsed = 0;
         }
         
-        Debug.DrawRay(prevMidPos, midPos, Color.red);
-        Debug.DrawRay(prevObjPos, projRef, Color.cyan);
-        Debug.DrawRay(prevMidPos, prevObjPos, Color.yellow);
-        // Debug.DrawRay(midPos, goToRef, Color.green);
-        // Debug.DrawRay(midPos, goToRef, Color.green);
+        // Debug.DrawLine(prevMidPos, midPos, Color.red);
+        // Debug.DrawLine(prevObjPos, projRefDir, Color.cyan);
+        // Debug.DrawLine(prevMidPos, prevObjPos, Color.yellow);
+        Debug.DrawLine(midPos, goToRef, Color.green);
         
 
        
