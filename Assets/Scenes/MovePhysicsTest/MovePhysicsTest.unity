@@ -302,6 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller1: {fileID: 1391455891}
   controller2: {fileID: 1047577601}
+  scalar: 20
   initialMagnitude: 1
   intensity: 2
   curve:

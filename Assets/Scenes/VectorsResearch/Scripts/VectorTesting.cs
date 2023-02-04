@@ -11,10 +11,8 @@ public class VectorTesting : MonoBehaviour
 
     public GameObject point;
 
-    [Range(0,1f)]
-    public float lerpVal;
-    [Range(0,1f)]
-    public float slerpVal;
+    [Range(0,2f)]
+    public float scalar;
 
     void Start()
     {
@@ -26,13 +24,23 @@ public class VectorTesting : MonoBehaviour
     {
         Vector3 BA = B.position - A.position;
         Vector3 BC = B.position - C.position;
-        Vector3 lerpPoint = Vector3.Lerp(A.position, C.position, lerpVal);
-        Vector3 slerpPoint = Vector3.Slerp(A.position, C.position, slerpVal);
+        Vector3 AC = C.position - A.position;
+        float ba = BA.magnitude;
+        float bc = BC.magnitude;
+        float ratio = ba/(ba+bc);
+        
+        Vector3 X = Vector3.Lerp(A.position, C.position, ratio);
+
+        Vector3 BX = B.position - X;
+        Vector3 D = C.position + BX;
+        Vector3 DC = D - C.position;
+        Vector3 N = DC * scalar + C.position;
 
         Debug.DrawLine(A.position, B.position, Color.green);
         Debug.DrawLine(B.position, C.position, Color.red);
         Debug.DrawLine(A.position, C.position, Color.blue);
-        Debug.DrawLine(B.position, lerpPoint, Color.yellow);
-        Debug.DrawLine(B.position, slerpPoint, Color.white);
+        Debug.DrawLine(B.position, X, Color.yellow);
+        Debug.DrawLine(C.position, D, Color.magenta);
+        Debug.DrawLine(C.position, N, Color.white);
     }
 }

@@ -14,7 +14,8 @@ public class PhysicsController : MonoBehaviour
     private Vector3 newPos;
 
     private float timeElapsed;
-    private float scalar;
+    [Range(0f,20f)]
+    public float scalar;
     private float acceleration;
 
     public float initialMagnitude = 1f;
@@ -28,34 +29,31 @@ public class PhysicsController : MonoBehaviour
         prevMidPos = midPos;
     }
 
-    float getAngle(Vector3 a, Vector3 b, Vector3 c) {
-        Vector3 side1 = a-b;
-        Vector3 side2 = c-b;
-        return Vector3.Angle(side1, side2);
-    }
-
-    Vector3 getBisector(Vector3 a, Vector3 b, Vector3 c) {
-        Vector3 side1 = a-b;
-        Vector3 side2 = c-b;
-        return Vector3.Slerp(side1, side2, 0.5f);
-    }
 
     void Update()
     {	
         midPos = Vector3.Lerp(controller1.position, controller2.position, 0.5f); // gets halfway point between the two controllers
-        Vector3 bisector = getBisector(testPos.position, midPos, transform.position);
-        // float bisector = getAngle(prevMidPos, midPos, transform.position);
 
-        Debug.DrawLine(midPos, transform.position, Color.green);
-        Debug.DrawLine(midPos, bisector, Color.red);
-        Debug.DrawLine(midPos, testPos.position, Color.blue);
+        // Vector3 BA = B.position - A.position;
+        Vector3 BA = midPos - prevMidPos;
+        // Vector3 BC = B.position - C.position;
+        Vector3 BC = midPos - transform.position;
+        // Vector3 AC = C.position - A.position;
+        float ba = BA.magnitude;
+        float bc = BC.magnitude;
+        float ratio = ba/(ba+bc);
         
-        
-        // prevMidPos = midPos;
+        Vector3 X = Vector3.Lerp(prevMidPos, transform.position, ratio);
+
+        Vector3 angleBisector = midPos - X;
+        Vector3 D = transform.position + angleBisector;
+        Vector3 DC = D - transform.position;
+        newPos = DC * scalar + transform.position;
+
+        transform.position = newPos;
+        prevMidPos = midPos;
 
         ObjectFollowCursor();
-
-        timeElapsed += Time.deltaTime;
     }
 
     private float distance = 15.2f;
