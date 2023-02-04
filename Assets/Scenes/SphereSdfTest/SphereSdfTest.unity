@@ -355,6 +355,7 @@ GameObject:
   m_Component:
   - component: {fileID: 802710107}
   - component: {fileID: 802710108}
+  - component: {fileID: 802710109}
   m_Layer: 0
   m_Name: Center
   m_TagString: Untagged
@@ -384,13 +385,77 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 802710106}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20f939fd4cbf9be41a8d7d6a602a7dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transform1: {fileID: 664018332}
   transform2: {fileID: 2052404921}
+--- !u!114 &802710109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802710106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aaffca141e5dde4d8e8bd72f4e2cbf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller1: {fileID: 664018332}
+  controller2: {fileID: 2052404921}
+  intensity: 0.4
+  accelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  speed: 10
+  moveTowardsCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1201780203
 GameObject:
   m_ObjectHideFlags: 0
