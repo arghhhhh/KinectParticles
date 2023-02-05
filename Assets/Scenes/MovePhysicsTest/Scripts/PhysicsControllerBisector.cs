@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // [ExecuteInEditMode]
-public class PhysicsControllerBisectorMoveTowards : MonoBehaviour
+public class PhysicsControllerBisector : MonoBehaviour
 {
     public Transform controller1;
     public Transform controller2;
+    public Transform followObj;
 
     private Vector3 prevMidPos;
     private Vector3 midPos;
@@ -35,16 +36,16 @@ public class PhysicsControllerBisectorMoveTowards : MonoBehaviour
         if (midPos != prevMidPos) // only do calculations on non-zero accelerations
         {
             Vector3 BA = midPos - prevMidPos;
-            Vector3 BC = midPos - transform.position;
+            Vector3 BC = midPos - followObj.transform.position;
             float ba = BA.magnitude;
             float bc = BC.magnitude;
             float bisectorRatio = ba/(ba+bc);
             
-            Vector3 bisectorPos = Vector3.Lerp(prevMidPos, transform.position, bisectorRatio);
+            Vector3 bisectorPos = Vector3.Lerp(prevMidPos, followObj.transform.position, bisectorRatio);
 
             Vector3 angleBisector = midPos - bisectorPos;
-            Vector3 D = transform.position + angleBisector;
-            Vector3 DC = D - transform.position;
+            Vector3 D = followObj.transform.position + angleBisector;
+            Vector3 DC = D - followObj.transform.position;
 
             float velocity = ba / timeElapsed; // velocity is the change in position over time
             float midAccel = (velocity - prevVelocity) / timeElapsed; // acceleration is the change in velocity over time
@@ -53,9 +54,9 @@ public class PhysicsControllerBisectorMoveTowards : MonoBehaviour
             midAccel = accelerationCurve.Evaluate(midAccel);
             float scalar = midAccel * intensity; // 
 
-            newPos = DC * scalar + transform.position;
+            newPos = DC * scalar + followObj.transform.position;
 
-            transform.position = newPos;
+            followObj.transform.position = newPos;
 
             prevMidPos = midPos;
             prevVelocity = velocity;
@@ -80,7 +81,7 @@ public class PhysicsControllerBisectorMoveTowards : MonoBehaviour
     public AnimationCurve moveTowardsCurve;
     
     void SteerToMiddle() {
-        float loc = Vector3.Distance(midPos, transform.position);
+        float loc = Vector3.Distance(midPos, followObj.transform.position);
         float dist = Vector3.Distance(controller1.position, controller2.position); // get distance between controllers
         dist = dist / 2f; // bring value closer to loc
         
@@ -89,6 +90,6 @@ public class PhysicsControllerBisectorMoveTowards : MonoBehaviour
 
         float step = relativeDistance * Time.deltaTime * speed;
 
-        transform.position = Vector3.MoveTowards(transform.position, midPos, step);
+        followObj.transform.position = Vector3.MoveTowards(followObj.transform.position, midPos, step);
     }
 }
