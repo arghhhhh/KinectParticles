@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.26960185, y: 0.49223647, z: 0.42633268}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -43,19 +44,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9045d133f640d214cbce5e5af2b582bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  executeInEditMode: 0
   JFAImplementation: {fileID: 7200000, guid: 3c29260ac4ca05f4780f9a4c44f20268, type: 3}
   MtVImplementation: {fileID: 7200000, guid: 39d9f785515d9ba49a5753410e0020fb, type: 3}
   outputRenderTexture: {fileID: 0}
-  offsetTransform: {fileID: 0}
-  scaleTransform: {fileID: 0}
-  mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
   skinnedMeshRenderer: {fileID: 0}
   materialOutput: {fileID: 2100000, guid: 92f7ad2f404ea904ba517bfd0b0d54ca, type: 2}
   materialProperty: _Texture3D
   vfxOutput: {fileID: 0}
   vfxProperty: Texture3D
+  fieldsChanged: 1
   sdfResolution: 64
   offset: {x: 0.5, y: 0.5, z: 0.5}
-  scaleBy: 0.5
+  scaleBy: 1
   samplesPerTriangle: 64
   postProcessThickness: 0.01

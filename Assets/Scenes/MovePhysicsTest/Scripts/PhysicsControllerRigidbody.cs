@@ -12,7 +12,6 @@ public class PhysicsControllerRigidbody : MonoBehaviour
 
     readonly float G = 1f;
     float r;
-    float prevR = 0;
     float m1;
     float m2;
 
@@ -55,13 +54,11 @@ public class PhysicsControllerRigidbody : MonoBehaviour
         }
 
         ObjectFollowCursor();
-
-        prevR = r;
     }
 
     void Gravity()
     {
-        followObj.GetComponent<Rigidbody>().AddForce((midPoint.transform.position-followObj.transform.position).normalized * (G * (m1 * m2) / (r * r)));
+        followObj.GetComponent<Rigidbody>().AddForce((midPoint.transform.position-followObj.transform.position).normalized * (G * (m1 * m2) / (r * r))); // physics formula for gavitational force
     }
 
     void InitialVelocity()
