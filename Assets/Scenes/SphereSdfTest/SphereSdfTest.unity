@@ -222,6 +222,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc903cbce6bde3d4c8a4c93d2742bcdf, type: 3}
+--- !u!84 &385280487
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 5
+  m_Width: 64
+  m_Height: 64
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 0
+  m_ColorFormat: 48
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 3
+  m_VolumeDepth: 64
+  m_ShadowSamplingMode: 2
 --- !u!1 &664018331
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,6 +349,34 @@ MonoBehaviour:
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  startMeasuringAt: 100
+  defaultScale: {x: 2, y: 2, z: 2}
+  mixMaxScale: {x: 2.15, y: 1.65}
+  scaleInc: 0.2
+  scaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -0.8178055
+      outSlope: -0.8178055
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.108333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.6537802
+      outSlope: -0.6537802
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.13749999
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -446,7 +511,7 @@ Transform:
   m_GameObject: {fileID: 802710106}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.2800002, y: -1.4599999, z: 0}
-  m_LocalScale: {x: 2.39, y: 2.39, z: 2.39}
+  m_LocalScale: {x: 2.19, y: 2.19, z: 2.19}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -547,7 +612,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!84 &1689495256
+--- !u!84 &1073135881
 RenderTexture:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -623,9 +688,12 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 5
+      - m_Value: 1
         m_Name: Initial Color Cycle Duration
-        m_Overridden: 0
+        m_Overridden: 1
+      - m_Value: 0.03
+        m_Name: StickDistance
+        m_Overridden: 1
     m_Vector2f:
       m_Array:
       - m_Value: {x: 0.3, y: 0.6}
@@ -654,7 +722,7 @@ VisualEffect:
       - m_Value: {x: 1.2800002, y: -1.4599999, z: 0}
         m_Name: DistanceFieldTransform_position
         m_Overridden: 1
-      - m_Value: {x: 2.39, y: 2.39, z: 2.39}
+      - m_Value: {x: 2.19, y: 2.19, z: 2.19}
         m_Name: DistanceFieldTransform_scale
         m_Overridden: 1
       - m_Value: {x: -0, y: 0, z: 0}
@@ -707,14 +775,14 @@ VisualEffect:
             inWeight: 0
             outWeight: 0
           - serializedVersion: 3
-            time: 0.2938454
-            value: 0.92862
-            inSlope: 0.068895675
-            outSlope: 0.068895675
+            time: 1.6605103
+            value: 0.74012053
+            inSlope: 0.21321337
+            outSlope: 0.21321337
             tangentMode: 0
             weightedMode: 0
             inWeight: 0
-            outWeight: 0
+            outWeight: 0.2092293
           - serializedVersion: 3
             time: 4
             value: 1
@@ -728,16 +796,16 @@ VisualEffect:
           m_PostInfinity: 2
           m_RotationOrder: 4
         m_Name: Color Mask by Distance
-        m_Overridden: 0
+        m_Overridden: 1
     m_Gradient:
       m_Array:
       - m_Value:
           serializedVersion: 2
-          key0: {r: 0, g: 0, b: 0, a: 0}
+          key0: {r: 0.94295937, g: 0.82452834, b: 1, a: 0.24313726}
           key1: {r: 0.082282715, g: 0.06480328, b: 0.5209957, a: 0.8}
           key2: {r: 1.0557042, g: 0.15920061, b: 2.9350598, a: 0.7019608}
           key3: {r: 3.1245537, g: 0.10137938, b: 0.5454294, a: 0.03529412}
-          key4: {r: 0, g: 0, b: 0, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0.03529412}
           key5: {r: 0, g: 0, b: 0, a: 0}
           key6: {r: 0, g: 0, b: 0, a: 0}
           key7: {r: 0, g: 0, b: 0, a: 0}
@@ -750,10 +818,10 @@ VisualEffect:
           ctime6: 0
           ctime7: 0
           atime0: 0
-          atime1: 3687
+          atime1: 9252
           atime2: 55143
           atime3: 65535
-          atime4: 0
+          atime4: 65535
           atime5: 0
           atime6: 0
           atime7: 0
@@ -761,44 +829,44 @@ VisualEffect:
           m_NumColorKeys: 5
           m_NumAlphaKeys: 4
         m_Name: Color Over Life
-        m_Overridden: 0
+        m_Overridden: 1
       - m_Value:
           serializedVersion: 2
-          key0: {r: 502.83737, g: 6.253101, b: 132.01627, a: 1}
-          key1: {r: 1471.1888, g: 346.57114, b: 4.6868024, a: 1}
-          key2: {r: 865.4277, g: 8.217857, b: 8.217857, a: 0}
-          key3: {r: 442.1459, g: 2.4484525, b: 113.64074, a: 0}
+          key0: {r: 1, g: 1, b: 1, a: 1}
+          key1: {r: 1, g: 1, b: 1, a: 1}
+          key2: {r: 1.0467147, g: 2.93506, b: 0.16903487, a: 0.7019608}
+          key3: {r: 0.11451248, g: 3.1245537, b: 1.6126049, a: 0.03529412}
           key4: {r: 0, g: 0, b: 0, a: 0}
           key5: {r: 0, g: 0, b: 0, a: 0}
           key6: {r: 0, g: 0, b: 0, a: 0}
           key7: {r: 0, g: 0, b: 0, a: 0}
-          ctime0: 84
-          ctime1: 21203
-          ctime2: 45003
-          ctime3: 65535
-          ctime4: 0
+          ctime0: 0
+          ctime1: 65535
+          ctime2: 33103
+          ctime3: 43494
+          ctime4: 65535
           ctime5: 0
           ctime6: 0
           ctime7: 0
           atime0: 0
           atime1: 65535
-          atime2: 0
-          atime3: 0
+          atime2: 55143
+          atime3: 65535
           atime4: 0
           atime5: 0
           atime6: 0
           atime7: 0
           m_Mode: 0
-          m_NumColorKeys: 4
+          m_NumColorKeys: 2
           m_NumAlphaKeys: 2
         m_Name: Initial Color Cycle
-        m_Overridden: 0
+        m_Overridden: 1
     m_NamedObject:
       m_Array:
       - m_Value: {fileID: 11700000, guid: 500adb08ae2ef274c9095ec1e41fde84, type: 2}
         m_Name: VectorField
         m_Overridden: 0
-      - m_Value: {fileID: 1689495256}
+      - m_Value: {fileID: 385280487}
         m_Name: Texture3D
         m_Overridden: 1
     m_Bool:
