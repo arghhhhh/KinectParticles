@@ -22,9 +22,7 @@ public class PhysicsControllerRigidbody : MonoBehaviour
     public float minS = 0.1f;
     public AnimationCurve massCurve;
 
-    float maxVelocity = 0;
     public int startMeasuringAt = 60;
-    int frameCount = 0;
     void Start()
     {
         // InitialVelocity();
@@ -66,40 +64,29 @@ public class PhysicsControllerRigidbody : MonoBehaviour
         ObjectFollowCursor();
     }
 
-    public Vector3 defaultScale = new Vector3(2f,2f,2f);
-    public Vector2 mixMaxScale = new Vector2(3.25f, 1f);
-    public float scaleInc = 0.2f;
-    float maxVelocityCap = 50f;
+    // public Vector3 defaultScale = new Vector3(2f,2f,2f);
+    // public Vector2 minMaxScale = new Vector2(3.25f, 1f);
+    public float approxMaxVelocity = 50f;
+    public float approxMaxSeparation = 20f;
+    public float oscMagnitude = 0.15f;
+    public float oscSpeed = 1f;
+    public float overshootMagnitude = 0.5f;
+    public float overshootSpeed = 0.33f;
     public AnimationCurve scaleCurve;
+    public float minScale = 1f;
+    public float maxScale = 3f;
     void ScaleOvershoot()
     {
-        // if (followObj.GetComponent<Rigidbody>().velocity.sqrMagnitude > maxVelocity) {
-        //     maxVelocity = followObj.GetComponent<Rigidbody>().velocity.sqrMagnitude;
-        //     Debug.Log(maxVelocity);
-        // }
-            
-        float V = Mathf.InverseLerp(0, maxVelocityCap, followObj.GetComponent<Rigidbody>().velocity.sqrMagnitude);
-        V = scaleCurve.Evaluate(V);
+        float D = Vector3.Distance(controller1.position, controller2.position);
+        float E = Mathf.InverseLerp(0f, approxMaxSeparation, D); // returns val between 0 and maxSeparation based on D
+        float F = Mathf.Lerp(1f, maxScale, E);
+        
+        float V = Mathf.InverseLerp(0, approxMaxVelocity, followObj.GetComponent<Rigidbody>().velocity.sqrMagnitude);
+        float W = scaleCurve.Evaluate(V) * overshootSpeed;
 
-        // float S = Mathf.Lerp(scaleInc, -scaleInc, V); // could use curve.eval on V to add a nice effect
-        // Vector3 scaleChange = Vector3.one * S;
-
-        // Vector3 minScale = Vector3.one * mixMaxScale.x;
-        // Vector3 maxScale = Vector3.one * mixMaxScale.y;
-
-        // followObj.transform.localScale += scaleChange;
-
-        // if (followObj.transform.localScale.sqrMagnitude < minScale.sqrMagnitude)
-        //     followObj.transform.localScale = minScale;
-        // else if (followObj.transform.localScale.sqrMagnitude > maxScale.sqrMagnitude)
-        //     followObj.transform.localScale = maxScale;
-
-        float S = Mathf.LerpUnclamped(mixMaxScale.x, mixMaxScale.y, V);
-        followObj.transform.localScale = Vector3.one * S;
-
-        // if (followObj.GetComponent<Rigidbody>().velocity.sqrMagnitude < 1f && followObj.transform.localScale.sqrMagnitude > defaultScale.sqrMagnitude)
-        //     followObj.transform.localScale -= scaleChange * 1.15f;
-
+        float Z = (0.5f * Mathf.Sin(Time.fixedUnscaledTime * oscSpeed + W * overshootMagnitude) + 0.5f) * F + minScale; // 0.5*sin(x)+0.5 oscillates between [0,1] and starts at 0
+    
+        followObj.transform.localScale = Vector3.one * Z;
     }
 
     void Gravity()

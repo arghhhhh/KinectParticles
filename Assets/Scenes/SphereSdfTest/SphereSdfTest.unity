@@ -222,7 +222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc903cbce6bde3d4c8a4c93d2742bcdf, type: 3}
---- !u!84 &385280487
+--- !u!84 &510885880
 RenderTexture:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -283,7 +283,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664018331}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.12, y: 0.16, z: 0}
+  m_LocalPosition: {x: -6.12, y: 0.16, z: 8.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -354,21 +354,42 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   startMeasuringAt: 100
-  defaultScale: {x: 2, y: 2, z: 2}
-  mixMaxScale: {x: 2.15, y: 1.65}
-  scaleInc: 0.2
+  approxMaxVelocity: 50
+  approxMaxSeparation: 20
+  oscMagnitude: 0.15
+  oscSpeed: 1
+  overshootMagnitude: 0.5
+  overshootSpeed: 0.33
   scaleCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: -0.8178055
-      outSlope: -0.8178055
+      inSlope: 0.72777945
+      outSlope: 0.72777945
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.108333334
+      outWeight: 0.7418739
+    - serializedVersion: 3
+      time: 0.43516657
+      value: 0.40372568
+      inSlope: 2.554378
+      outSlope: 2.554378
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.138261
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7453315
+      value: 0.9955871
+      inSlope: 0.8281213
+      outSlope: 0.8281213
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 1
@@ -381,6 +402,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  minScale: 1
+  maxScale: 3
   speed: 8
   moveTowardsCurve:
     serializedVersion: 2
@@ -612,43 +635,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!84 &1073135881
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 5
-  m_Width: 64
-  m_Height: 64
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 0
-  m_ColorFormat: 48
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 3
-  m_VolumeDepth: 64
-  m_ShadowSamplingMode: 2
 --- !u!1 &1692057708
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,7 +723,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 0}
         m_Name: LeftHandTransform_angles
         m_Overridden: 1
-      - m_Value: {x: -6.12, y: 0.16, z: 0}
+      - m_Value: {x: -6.12, y: 0.16, z: 8.6}
         m_Name: LeftHandTransform_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -866,7 +852,7 @@ VisualEffect:
       - m_Value: {fileID: 11700000, guid: 500adb08ae2ef274c9095ec1e41fde84, type: 2}
         m_Name: VectorField
         m_Overridden: 0
-      - m_Value: {fileID: 385280487}
+      - m_Value: {fileID: 1726445106}
         m_Name: Texture3D
         m_Overridden: 1
     m_Bool:
@@ -989,6 +975,43 @@ MonoBehaviour:
   m_Property:
     m_Name: DistanceFieldTransform
   Target: {fileID: 802710107}
+--- !u!84 &1726445106
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 5
+  m_Width: 64
+  m_Height: 64
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 0
+  m_ColorFormat: 48
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 3
+  m_VolumeDepth: 64
+  m_ShadowSamplingMode: 2
 --- !u!1 &1989790704
 GameObject:
   m_ObjectHideFlags: 0

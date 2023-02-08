@@ -55,6 +55,8 @@ public class EnergyVfxController : MonoBehaviour
         if((emitterTargetObj.transform.position-midPointObj.transform.position).magnitude<gravityStopDist && emitterTargetObj.GetComponent<Rigidbody>().velocity.magnitude<(gravityStopDist / 2f)){
             emitterTargetObj.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
+
+        SetScale();
     }
 
 
@@ -71,5 +73,28 @@ public class EnergyVfxController : MonoBehaviour
         float step = relativeDistance * Time.deltaTime * pushSpeed;
         
         emitterTargetObj.GetComponent<Rigidbody>().position = Vector3.MoveTowards(emitterTargetObj.transform.position, midPointObj.transform.position, step);
+    }
+
+    public float approxMaxVelocity = 50f;
+    public float approxMaxSeparation = 20f;
+    public float oscMagnitude = 0.15f;
+    public float oscSpeed = 1f;
+    public float overshootMagnitude = 0.5f;
+    public float overshootSpeed = 0.33f;
+    public AnimationCurve scaleCurve;
+    public float minScale = 1f;
+    public float maxScale = 3f;
+    void SetScale()
+    {
+        float D = Vector3.Distance(leftEmitterObj.transform.position, rightEmitterObj.transform.position);
+        float E = Mathf.InverseLerp(0f, approxMaxSeparation, D);
+        float F = Mathf.Lerp(1f, maxScale, E);
+        
+        float V = Mathf.InverseLerp(0, approxMaxVelocity, emitterTargetObj.GetComponent<Rigidbody>().velocity.sqrMagnitude);
+        float W = scaleCurve.Evaluate(V) * overshootSpeed;
+
+        float Z = (0.5f * Mathf.Sin(Time.fixedUnscaledTime * oscSpeed + W * overshootMagnitude) + 0.5f) * F + minScale;
+    
+        emitterTargetObj.transform.localScale = Vector3.one * Z;
     }
 }
