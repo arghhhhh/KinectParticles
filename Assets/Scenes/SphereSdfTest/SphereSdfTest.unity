@@ -153,12 +153,12 @@ PrefabInstance:
     - target: {fileID: 4242929766940531546, guid: fc903cbce6bde3d4c8a4c93d2742bcdf,
         type: 3}
       propertyPath: fieldsChanged
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4242929766940531546, guid: fc903cbce6bde3d4c8a4c93d2742bcdf,
         type: 3}
       propertyPath: executeInEditMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4242929766940531547, guid: fc903cbce6bde3d4c8a4c93d2742bcdf,
         type: 3}
@@ -220,45 +220,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeshToSDF
       objectReference: {fileID: 0}
+    - target: {fileID: 4242929766940531549, guid: fc903cbce6bde3d4c8a4c93d2742bcdf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc903cbce6bde3d4c8a4c93d2742bcdf, type: 3}
---- !u!84 &510885880
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 5
-  m_Width: 64
-  m_Height: 64
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 0
-  m_ColorFormat: 48
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 3
-  m_VolumeDepth: 64
-  m_ShadowSamplingMode: 2
 --- !u!1 &664018331
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,6 +268,7 @@ GameObject:
   m_Component:
   - component: {fileID: 672569457}
   - component: {fileID: 672569456}
+  - component: {fileID: 672569458}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -444,6 +413,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &672569458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672569455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14272cad539e93a4ba9d8f112d0b2bad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1692057718}
+  animationName: ParticleSpawn
+  startDelay: 2
 --- !u!850595691 &785195283
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -635,6 +619,43 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!84 &1179763777
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 5
+  m_Width: 64
+  m_Height: 64
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 0
+  m_ColorFormat: 48
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 3
+  m_VolumeDepth: 64
+  m_ShadowSamplingMode: 2
 --- !u!1 &1692057708
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +671,7 @@ GameObject:
   - component: {fileID: 1692057715}
   - component: {fileID: 1692057716}
   - component: {fileID: 1692057717}
+  - component: {fileID: 1692057718}
   m_Layer: 0
   m_Name: VFX
   m_TagString: Untagged
@@ -677,8 +699,23 @@ VisualEffect:
       - m_Value: 1
         m_Name: Initial Color Cycle Duration
         m_Overridden: 1
-      - m_Value: 0.03
+      - m_Value: 0.05
         m_Name: StickDistance
+        m_Overridden: 1
+      - m_Value: -17
+        m_Name: VffIntensity
+        m_Overridden: 1
+      - m_Value: 37
+        m_Name: VffDrag
+        m_Overridden: 1
+      - m_Value: -0.001
+        m_Name: SdfStickDistance
+        m_Overridden: 1
+      - m_Value: 0.1
+        m_Name: SdfAttractionSpeed
+        m_Overridden: 1
+      - m_Value: 2
+        m_Name: SdfAttractionForce
         m_Overridden: 1
     m_Vector2f:
       m_Array:
@@ -743,7 +780,10 @@ VisualEffect:
     m_Uint:
       m_Array: []
     m_Int:
-      m_Array: []
+      m_Array:
+      - m_Value: 0
+        m_Name: SpawnRate
+        m_Overridden: 1
     m_Matrix4x4f:
       m_Array: []
     m_AnimationCurve:
@@ -852,7 +892,7 @@ VisualEffect:
       - m_Value: {fileID: 11700000, guid: 500adb08ae2ef274c9095ec1e41fde84, type: 2}
         m_Name: VectorField
         m_Overridden: 0
-      - m_Value: {fileID: 1726445106}
+      - m_Value: {fileID: 1179763777}
         m_Name: Texture3D
         m_Overridden: 1
     m_Bool:
@@ -975,43 +1015,26 @@ MonoBehaviour:
   m_Property:
     m_Name: DistanceFieldTransform
   Target: {fileID: 802710107}
---- !u!84 &1726445106
-RenderTexture:
+--- !u!95 &1692057718
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 5
-  m_Width: 64
-  m_Height: 64
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 0
-  m_ColorFormat: 48
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 3
-  m_VolumeDepth: 64
-  m_ShadowSamplingMode: 2
+  m_GameObject: {fileID: 1692057708}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3235475ae9ff64346801e99f82d7eae3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1989790704
 GameObject:
   m_ObjectHideFlags: 0
