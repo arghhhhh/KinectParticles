@@ -17,7 +17,9 @@ public class EnergyVfxController : MonoBehaviour
 
         Transform body = gameObject.transform.parent;
         leftEmitterObj.transform.parent = MyLib.FindChildWithTag(body.gameObject, "LeftHand").transform;
+        leftEmitterObj.transform.localPosition = Vector3.zero;
         rightEmitterObj.transform.parent = MyLib.FindChildWithTag(body.gameObject, "RightHand").transform;
+        rightEmitterObj.transform.localPosition = Vector3.zero;
     }
 
 

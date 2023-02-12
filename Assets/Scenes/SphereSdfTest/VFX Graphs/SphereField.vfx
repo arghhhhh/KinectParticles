@@ -445,6 +445,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615644}
   - {fileID: 8926484042661615646}
   - {fileID: 8926484042661615648}
+  - {fileID: 8926484042661615669}
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
@@ -712,8 +713,22 @@ MonoBehaviour:
     max: Infinity
     enumValues: []
     descendantCount: 0
-  - name: Color Over Life
-    path: Color Over Life
+  - name: GradientLeftSide
+    path: GradientLeftSide
+    tooltip: 
+    sheetType: m_Gradient
+    realType: Gradient
+    defaultValue:
+      m_Type:
+        m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":0.0},{"color":{"r":3.124553680419922,"g":0.1013793796300888,"b":0.5454294085502625,"a":1.0},"time":0.33699551224708559},{"color":{"r":1.0557042360305787,"g":0.15920060873031617,"b":2.9350597858428957,"a":1.0},"time":0.4939955770969391},{"color":{"r":0.08228271454572678,"g":0.06480327993631363,"b":0.5209956765174866,"a":1.0},"time":0.6455023884773254},{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.03529411926865578,"time":0.0},{"alpha":0.7019608020782471,"time":0.1589990109205246},{"alpha":0.800000011920929,"time":0.9439994096755981},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
+    min: -Infinity
+    max: Infinity
+    enumValues: []
+    descendantCount: 0
+  - name: GradientRightSide
+    path: GradientRightSide
     tooltip: 
     sheetType: m_Gradient
     realType: Gradient
@@ -849,7 +864,7 @@ MonoBehaviour:
   m_InputSlots:
   - {fileID: 114761303450105272}
   m_OutputSlots: []
-  m_Disabled: 1
+  m_Disabled: 0
   attribute: color
   Composition: 0
   Source: 0
@@ -1029,7 +1044,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114231982420006628}
   m_Children: []
-  m_UIPosition: {x: 1029, y: 2871}
+  m_UIPosition: {x: -1026, y: 2819}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
@@ -1680,10 +1695,10 @@ MonoBehaviour:
   - title: Color Blending
     position:
       serializedVersion: 2
-      x: 334
-      y: 2796
+      x: -1720
+      y: 2741
       width: 1763
-      height: 799
+      height: 801
     contents:
     - model: {fileID: 8926484042661614580}
       id: 0
@@ -1830,8 +1845,8 @@ MonoBehaviour:
   - title: Color Blending
     position:
       serializedVersion: 2
-      x: 360
-      y: 2862
+      x: -1695
+      y: 2810
       width: 582
       height: 423
     contents: '
@@ -1852,8 +1867,8 @@ MonoBehaviour:
   - title: Computing the attenuation
     position:
       serializedVersion: 2
-      x: 1585
-      y: 3110
+      x: -470
+      y: 3058
       width: 487
       height: 459
     contents: 'To compute the mask, we first compute the distance between the particle
@@ -1910,10 +1925,10 @@ MonoBehaviour:
     collapsed: 0
   uiBounds:
     serializedVersion: 2
-    x: -891
-    y: -114
-    width: 3700
-    height: 3710
+    x: -1720
+    y: -115
+    width: 4529
+    height: 3657
 --- !u!114 &114761303450105272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2543,7 +2558,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114231982420006628}
   m_Children: []
-  m_UIPosition: {x: 1330, y: 2962}
+  m_UIPosition: {x: -725, y: 2910}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -3247,7 +3262,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614694}
   m_ExposedName: DistanceFieldTransform
   m_Exposed: 1
-  m_Order: 3
+  m_Order: 2
   m_Category: Signed Distance Field
   m_Min:
     m_Type:
@@ -3292,7 +3307,7 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661614695}
       inputSlot: {fileID: 8926484042661614966}
-    position: {x: 734.4, y: 3316.8}
+    position: {x: -1320.8889, y: 3264.4443}
     expandedSlots:
     - {fileID: 8926484042661614694}
     expanded: 1
@@ -3761,7 +3776,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114231982420006628}
   m_Children: []
-  m_UIPosition: {x: 1858, y: 2936}
+  m_UIPosition: {x: -197, y: 2884}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -3873,8 +3888,8 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
   m_Direction: 1
   m_LinkedSlots:
-  - {fileID: 8926484042661615075}
   - {fileID: 8926484042661615450}
+  - {fileID: 8926484042661615075}
 --- !u!114 &8926484042661614943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3890,7 +3905,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114231982420006628}
   m_Children: []
-  m_UIPosition: {x: 1644, y: 2966}
+  m_UIPosition: {x: -411, y: 2914}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -4027,7 +4042,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114231982420006628}
   m_Children: []
-  m_UIPosition: {x: 989, y: 3014}
+  m_UIPosition: {x: -1066, y: 2962}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -4551,7 +4566,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615036}
   m_ExposedName: Initial Color Cycle Duration
   m_Exposed: 1
-  m_Order: 4
+  m_Order: 3
   m_Category: Color
   m_Min:
     m_Type:
@@ -4629,9 +4644,9 @@ MonoBehaviour:
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661615041}
-  m_ExposedName: Color Over Life
+  m_ExposedName: GradientRightSide
   m_Exposed: 1
-  m_Order: 10
+  m_Order: 8
   m_Category: Color
   m_Min:
     m_Type:
@@ -4649,12 +4664,12 @@ MonoBehaviour:
   - m_Id: 0
     linkedSlots:
     - outputSlot: {fileID: 8926484042661615041}
-      inputSlot: {fileID: 8926484042661615074}
-    - outputSlot: {fileID: 8926484042661615041}
       inputSlot: {fileID: 8926484042661615449}
-    position: {x: 1150.4, y: 2464}
+    - outputSlot: {fileID: 8926484042661615041}
+      inputSlot: {fileID: 8926484042661615074}
+    position: {x: 2115.111, y: 2804.889}
     expandedSlots: []
-    expanded: 0
+    expanded: 1
 --- !u!114 &8926484042661615041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4689,8 +4704,8 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   m_Direction: 1
   m_LinkedSlots:
-  - {fileID: 8926484042661615074}
   - {fileID: 8926484042661615449}
+  - {fileID: 8926484042661615074}
 --- !u!114 &8926484042661615045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4714,7 +4729,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615046}
   m_ExposedName: Color Mask by Distance
   m_Exposed: 1
-  m_Order: 7
+  m_Order: 4
   m_Category: Color
   m_Min:
     m_Type:
@@ -4734,7 +4749,7 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661615046}
       inputSlot: {fileID: 8926484042661614940}
-    position: {x: 1599.2, y: 2856}
+    position: {x: -527.1111, y: 2800.4443}
     expandedSlots: []
     expanded: 1
 --- !u!114 &8926484042661615046
@@ -4977,13 +4992,13 @@ MonoBehaviour:
   - {fileID: 8926484042661615074}
   - {fileID: 8926484042661615075}
   m_OutputSlots: []
-  m_Disabled: 1
+  m_Disabled: 0
   attribute: color
   Composition: 3
   AlphaComposition: 3
   SampleMode: 0
   Mode: 1
-  ColorMode: 3
+  ColorMode: 1
   channels: 6
 --- !u!114 &8926484042661615074
 MonoBehaviour:
@@ -7232,7 +7247,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615195}
   m_ExposedName: LeftHandTransform
   m_Exposed: 1
-  m_Order: 13
+  m_Order: 14
   m_Category: 
   m_Min:
     m_Type:
@@ -11830,7 +11845,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615427}
   m_ExposedName: RightHandTransform
   m_Exposed: 1
-  m_Order: 14
+  m_Order: 15
   m_Category: 
   m_Min:
     m_Type:
@@ -12685,7 +12700,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615488}
   m_ExposedName: RotationSpeed
   m_Exposed: 1
-  m_Order: 8
+  m_Order: 6
   m_Category: Signed Distance Field
   m_Min:
     m_Type:
@@ -14988,7 +15003,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615619}
   m_ExposedName: SdfStickDistance
   m_Exposed: 1
-  m_Order: 9
+  m_Order: 11
   m_Category: Animated Values
   m_Min:
     m_Type:
@@ -15445,7 +15460,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615641}
   m_ExposedName: SpawnRate
   m_Exposed: 1
-  m_Order: 2
+  m_Order: 5
   m_Category: Animated Values
   m_Min:
     m_Type:
@@ -15525,7 +15540,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615643}
   m_ExposedName: VffIntensity
   m_Exposed: 1
-  m_Order: 11
+  m_Order: 12
   m_Category: Animated Values
   m_Min:
     m_Type:
@@ -15613,7 +15628,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615645}
   m_ExposedName: VffDrag
   m_Exposed: 1
-  m_Order: 12
+  m_Order: 13
   m_Category: Animated Values
   m_Min:
     m_Type:
@@ -15701,7 +15716,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615647}
   m_ExposedName: SdfAttractionForce
   m_Exposed: 1
-  m_Order: 6
+  m_Order: 10
   m_Category: Animated Values
   m_Min:
     m_Type:
@@ -15789,7 +15804,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615649}
   m_ExposedName: SdfAttractionSpeed
   m_Exposed: 1
-  m_Order: 5
+  m_Order: 9
   m_Category: Animated Values
   m_Min:
     m_Type:
@@ -15854,3 +15869,80 @@ MonoBehaviour:
   m_LinkedSlots:
   - {fileID: 8926484042661615406}
   - {fileID: 8926484042661615156}
+--- !u!114 &8926484042661615669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 330e0fca1717dde4aaa144f48232aa64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UIIgnoredErrors: []
+  m_Parent: {fileID: 114231982420006628}
+  m_Children: []
+  m_UIPosition: {x: 0, y: 0}
+  m_UICollapsed: 0
+  m_UISuperCollapsed: 0
+  m_InputSlots: []
+  m_OutputSlots:
+  - {fileID: 8926484042661615670}
+  m_ExposedName: GradientLeftSide
+  m_Exposed: 1
+  m_Order: 7
+  m_Category: Color
+  m_Min:
+    m_Type:
+      m_SerializableType: 
+    m_SerializableObject: 
+  m_Max:
+    m_Type:
+      m_SerializableType: 
+    m_SerializableObject: 
+  m_IsOutput: 0
+  m_EnumValues: []
+  m_ValueFilter: 0
+  m_Tooltip: 
+  m_Nodes:
+  - m_Id: 0
+    linkedSlots: []
+    position: {x: -138.66667, y: 2526.6667}
+    expandedSlots: []
+    expanded: 0
+--- !u!114 &8926484042661615670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f778ff57c4e8145b9681fe3268d8e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UIIgnoredErrors: []
+  m_Parent: {fileID: 0}
+  m_Children: []
+  m_UIPosition: {x: 0, y: 0}
+  m_UICollapsed: 1
+  m_UISuperCollapsed: 0
+  m_MasterSlot: {fileID: 8926484042661615670}
+  m_MasterData:
+    m_Owner: {fileID: 8926484042661615669}
+    m_Value:
+      m_Type:
+        m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":0.0},{"color":{"r":3.124553680419922,"g":0.1013793796300888,"b":0.5454294085502625,"a":1.0},"time":0.33699551224708559},{"color":{"r":1.0557042360305787,"g":0.15920060873031617,"b":2.9350597858428957,"a":1.0},"time":0.4939955770969391},{"color":{"r":0.08228271454572678,"g":0.06480327993631363,"b":0.5209956765174866,"a":1.0},"time":0.6455023884773254},{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.03529411926865578,"time":0.0},{"alpha":0.7019608020782471,"time":0.1589990109205246},{"alpha":0.800000011920929,"time":0.9439994096755981},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
+    m_Space: 2147483647
+  m_Property:
+    name: o
+    m_serializedType:
+      m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  m_Direction: 1
+  m_LinkedSlots: []
