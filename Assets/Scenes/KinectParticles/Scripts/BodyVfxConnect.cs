@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Windows.Kinect;
 using Joint = Windows.Kinect.Joint;
 
@@ -87,6 +88,8 @@ public class BodyVfxConnect : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
             DeleteAllBodies(knownIds);
+        else if (Input.GetMouseButtonDown(1))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         #endregion
 
         #region Create Kinect Bodies
