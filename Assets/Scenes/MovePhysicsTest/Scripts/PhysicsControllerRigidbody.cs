@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class PhysicsControllerRigidbody : MonoBehaviour
 {
     public Transform controller1;
     public Transform controller2;
+    public GameObject parent1;
+    public GameObject parent2;
+    public Transform wayOut;
     public GameObject followObj;
     public GameObject midPointPrefab;
     private GameObject midPoint;
@@ -26,12 +30,48 @@ public class PhysicsControllerRigidbody : MonoBehaviour
     void Start()
     {
         // InitialVelocity();
+        controller1.parent = parent1.transform;
+        controller1.localPosition = Vector3.zero;
+        controller2.parent = parent2.transform;
+        controller2.localPosition = Vector3.zero;
+
         midPoint = Instantiate(midPointPrefab);
         midPoint.transform.position = Vector3.Lerp(controller1.position, controller2.position, 0.5f);
     }
 
     void FixedUpdate()
     {
+        if (Input.GetMouseButton(0) && Input.GetMouseButton(1))
+        {
+            controller1.parent = wayOut;
+            controller1.localPosition = Vector3.zero;
+            controller2.parent = wayOut;
+            controller2.localPosition = Vector3.zero;
+        }
+        else if (Input.GetMouseButton(0))
+        {
+            controller1.parent = parent1.transform;
+            controller1.localPosition = Vector3.zero;
+            controller2.parent = parent1.transform;
+            controller2.localPosition = Vector3.zero;
+
+        }
+        else if (Input.GetMouseButton(1))
+        {
+            controller1.parent = parent2.transform;
+            controller1.localPosition = Vector3.zero;
+            controller2.parent = parent2.transform;
+            controller2.localPosition = Vector3.zero;
+        }
+        else
+        {
+            controller1.parent = parent1.transform;
+            controller1.localPosition = Vector3.zero;
+            controller2.parent = parent2.transform;
+            controller2.localPosition = Vector3.zero;
+
+        }
+
         midPoint.transform.position = Vector3.Lerp(controller1.position, controller2.position, 0.5f);
 
         r = Vector3.Distance(midPoint.transform.position, followObj.transform.position);
@@ -108,7 +148,7 @@ public class PhysicsControllerRigidbody : MonoBehaviour
         Vector3 point = ray.origin + (ray.direction * distance); // point is the next place the object needs to go to
         // point.z = Mathf.Sin(3f*time) * 3f;
         // Debug.Log(point.z);
-        controller2.position = point;
+        parent2.transform.position = point;
         // time += Time.fixedDeltaTime;
     }
 

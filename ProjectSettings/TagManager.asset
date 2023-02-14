@@ -6,6 +6,11 @@ TagManager:
   tags:
   - LeftHand
   - RightHand
+  - BothState
+  - LeftState
+  - RightState
+  - NoneState
+  - OutHere
   layers:
   - Default
   - TransparentFX

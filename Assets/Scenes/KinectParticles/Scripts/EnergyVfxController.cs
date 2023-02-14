@@ -3,23 +3,29 @@ using MyLib = JossLib.MyUtilityFuncs;
 
 public class EnergyVfxController : MonoBehaviour
 {
+    private GameObject bodyObj;
+    private Transform leftParent;
+    private Transform rightParent;
+    public Transform wayOut;
     public GameObject leftEmitterObj;
     public GameObject rightEmitterObj;
     public GameObject emitterTargetObj;
     private GameObject midPointObj;
     void Start()
     {
+        bodyObj = gameObject.transform.parent.gameObject;
+        leftParent = MyLib.FindChildWithTag(bodyObj, "LeftHand").transform;
+        rightParent = MyLib.FindChildWithTag(bodyObj, "RightHand").transform;
+
+        wayOut = GameObject.FindWithTag("OutHere").transform;
+        if (!wayOut)
+            Debug.LogError("No object found with tag 'OutHere'");
+
         midPointObj = new GameObject("Emitters Midpoint");
         midPointObj.AddComponent<Rigidbody>();
         midPointObj.GetComponent<Rigidbody>().useGravity = false;
         midPointObj.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.Continuous;
         midPointObj.transform.parent = gameObject.transform;
-
-        Transform body = gameObject.transform.parent;
-        leftEmitterObj.transform.parent = MyLib.FindChildWithTag(body.gameObject, "LeftHand").transform;
-        leftEmitterObj.transform.localPosition = Vector3.zero;
-        rightEmitterObj.transform.parent = MyLib.FindChildWithTag(body.gameObject, "RightHand").transform;
-        rightEmitterObj.transform.localPosition = Vector3.zero;
     }
 
 
@@ -36,6 +42,8 @@ public class EnergyVfxController : MonoBehaviour
     public float pushStopDist = 0.1f;
     void FixedUpdate()
     {
+        SetControllerParents();
+
         midPointObj.transform.position = Vector3.Lerp(leftEmitterObj.transform.position, rightEmitterObj.transform.position, 0.5f);
 
         r = Vector3.Distance(midPointObj.transform.position, emitterTargetObj.transform.position);
@@ -43,10 +51,8 @@ public class EnergyVfxController : MonoBehaviour
         if (adaptMass < minMass) adaptMass = minMass;
         midPointObj.GetComponent<Rigidbody>().mass = adaptMass;
 
-
         m1 = emitterTargetObj.GetComponent<Rigidbody>().mass;
         m2 = midPointObj.GetComponent<Rigidbody>().mass;
-        
         
         if (r > gravityStopDist) 
             emitterTargetObj.GetComponent<Rigidbody>().AddForce((midPointObj.transform.position-emitterTargetObj.transform.position).normalized * (G * (m1 * m2) / (r * r)));
@@ -59,6 +65,37 @@ public class EnergyVfxController : MonoBehaviour
         }
 
         SetScale();
+    }
+
+    void SetControllerParents()
+    {
+        if (bodyObj.tag == "BothState")
+        {
+            leftEmitterObj.transform.parent = leftParent;
+            rightEmitterObj.transform.parent = rightParent;
+        }
+        else if (bodyObj.tag == "LeftState")
+        {
+            leftEmitterObj.transform.parent = leftParent;
+            rightEmitterObj.transform.parent = leftParent;
+
+        }
+        else if (bodyObj.tag == "RightState")
+        {
+            leftEmitterObj.transform.parent = rightParent;
+            rightEmitterObj.transform.parent = rightParent;
+        }
+        else if (bodyObj.tag == "NoneState")
+        {
+            leftEmitterObj.transform.parent = wayOut;
+            rightEmitterObj.transform.parent = wayOut;
+        }
+        else
+        {
+            Debug.LogError("Shouldn't be here! Body object tag not found.");
+        }
+        leftEmitterObj.transform.localPosition = Vector3.zero;
+        rightEmitterObj.transform.localPosition = Vector3.zero;
     }
 
 

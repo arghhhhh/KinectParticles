@@ -142,8 +142,8 @@ public class BodyVfxConnect : MonoBehaviour
             }
 
             if (joint == JointType.HandLeft) {
-                    newJoint.tag = "LeftHand";
-                }
+                newJoint.tag = "LeftHand";
+            }
             else if (joint == JointType.HandRight) {
                 newJoint.tag = "RightHand";
             }
@@ -165,6 +165,15 @@ public class BodyVfxConnect : MonoBehaviour
             Transform jointObject = bodyObject.transform.Find(joint.ToString());
             jointObject.position = targetPosition;
         }
+
+        if ((body.HandLeftState == HandState.Open || body.HandLeftState == HandState.Lasso) && (body.HandRightState == HandState.Open || body.HandRightState == HandState.Lasso))
+            bodyObject.tag = "BothState";
+        else if ((body.HandLeftState == HandState.Open || body.HandLeftState == HandState.Lasso) && (body.HandRightState != HandState.Open && body.HandRightState != HandState.Lasso))
+            bodyObject.tag = "LeftState";
+        else if ((body.HandLeftState != HandState.Open && body.HandLeftState != HandState.Lasso) && (body.HandRightState == HandState.Open && body.HandRightState == HandState.Lasso))
+            bodyObject.tag = "RightState";
+        else
+            bodyObject.tag = "NoneState";
     }
 
     private static Vector3 GetVector3FromJoint(Joint joint)
