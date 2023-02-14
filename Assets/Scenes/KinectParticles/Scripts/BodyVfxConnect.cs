@@ -170,7 +170,7 @@ public class BodyVfxConnect : MonoBehaviour
             bodyObject.tag = "BothState";
         else if ((body.HandLeftState == HandState.Open || body.HandLeftState == HandState.Lasso) && (body.HandRightState != HandState.Open && body.HandRightState != HandState.Lasso))
             bodyObject.tag = "LeftState";
-        else if ((body.HandLeftState != HandState.Open && body.HandLeftState != HandState.Lasso) && (body.HandRightState == HandState.Open && body.HandRightState == HandState.Lasso))
+        else if ((body.HandLeftState != HandState.Open && body.HandLeftState != HandState.Lasso) && (body.HandRightState == HandState.Open || body.HandRightState == HandState.Lasso))
             bodyObject.tag = "RightState";
         else
             bodyObject.tag = "NoneState";
